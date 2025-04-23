@@ -58,19 +58,20 @@ public class Player {
 	public void update() {
 		if (kh.w) {
 			direction = "up";
-			y -= speed;
+			if (y >= - gp.tileSize / 2) y -= speed;
 		}
 		else if (kh.a) {
 			direction = "left";
-			x -= speed;
+			if (x >= 0) x -= speed;
+			
 		}
 		else if (kh.s) {
 			direction = "down";
-			y += speed;
+			if (y <= gp.maxScreenRow * gp.tileSize - gp.tileSize * 2) y += speed;
 		}
 		else if (kh.d) {
 			direction = "right";
-			x += speed;
+			if (x <= gp.maxScreenCol * gp.tileSize - gp.tileSize) x += speed;
 		}
 		spriteCounter++;
 		if (spriteCounter > 30) {
