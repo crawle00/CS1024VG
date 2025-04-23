@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 public class GamePanel extends JPanel implements Runnable {
 	public Thread thread;
 	public KeyHandler kh = new KeyHandler();
+	public Player player = new Player(this, kh);
 	
 	final int tileSize = 16 * 3; // 16x16 and scale of 3
 	final int maxScreenCol = 16;
@@ -26,15 +27,14 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 	
 	public void update() {
-		if (kh.w) System.out.println("w");
-		else if (kh.a) System.out.println("a");
-		else if (kh.s) System.out.println("s");
-		else if (kh.d) System.out.println("d");
+		player.update();
 	}
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
+		player.draw(g2);
+		g2.dispose();
 		Toolkit.getDefaultToolkit().sync();
 	}
 	
