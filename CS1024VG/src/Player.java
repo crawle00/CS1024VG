@@ -63,7 +63,6 @@ public class Player {
 		else if (kh.a) {
 			direction = "left";
 			if (x >= 0) x -= speed;
-			
 		}
 		else if (kh.s) {
 			direction = "down";
@@ -73,13 +72,16 @@ public class Player {
 			direction = "right";
 			if (x <= gp.maxScreenCol * gp.tileSize - gp.tileSize) x += speed;
 		}
-		spriteCounter++;
-		if (spriteCounter > 30) {
-			if (spriteNum == 6) {
-				spriteNum = 1;
-			} else spriteNum++;
-			spriteCounter = 0;
+		if (kh.w || kh.a || kh.s || kh.d) {
+			spriteCounter++;
+			if (spriteCounter > 30) {
+				if (spriteNum == 6) {
+					spriteNum = 1;
+				} else spriteNum++;
+				spriteCounter = 0;
+			}
 		}
+		
 	}
 	
 	public void draw(Graphics2D g2) {
