@@ -9,6 +9,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public Thread thread;
 	public KeyHandler kh = new KeyHandler();
 	public Player player = new Player(this, kh);
+	public Boss boss = new Boss(100, 0, 0);
 	
 	final int tileSize = 16 * 3; // 16x16 and scale of 3
 	final int maxScreenCol = 16;
@@ -28,6 +29,7 @@ public class GamePanel extends JPanel implements Runnable {
 	
 	public void update() {
 		player.update();
+		
 	}
 	
 	public void paintComponent(Graphics g) {
