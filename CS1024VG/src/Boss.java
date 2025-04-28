@@ -9,6 +9,7 @@ public class Boss {
 	
 	public int bossx = 0;
 	public int bossy = 0;
+	BufferedImage phase1, phase2, phase3;
 	
 	public Boss(){
 	}
@@ -17,9 +18,9 @@ public class Boss {
 		this.bossx = bossx;
 		this.bossy = bossy;
 		try {
-		BufferedImage phase1 = ImageIO.read(getClass().getResourceAsStream("/Boss/bossPhase1.png"));
-		BufferedImage phase2 = ImageIO.read(getClass().getResourceAsStream("/Boss/bossPhase2.png"));
-		BufferedImage phase3 = ImageIO.read(getClass().getResourceAsStream("/Boss/bossPhase3.png"));
+		phase1 = ImageIO.read(getClass().getResourceAsStream("/Boss/bossPhase1.png"));
+		phase2 = ImageIO.read(getClass().getResourceAsStream("/Boss/bossPhase2.png"));
+		phase3 = ImageIO.read(getClass().getResourceAsStream("/Boss/bossPhase3.png"));
 		}
 		catch(IOException e) {
 			e.printStackTrace();
@@ -29,6 +30,16 @@ public class Boss {
 	public void drawBoss(Graphics2D g2) {
 		BufferedImage image = null;
 		
+		if(this.bossHealth >= 70) {
+			image = phase1;
+		}
+		else if(this.bossHealth >= 30) {
+			image = phase2;
+		}
+		else {
+			image = phase3;
+		}
+		
 		
 		
 		g2.drawImage(image, bossx, bossy, 100, 100, null);
@@ -36,5 +47,6 @@ public class Boss {
 	
 	
 	public void update() {
+		
 	}
 }
