@@ -9,6 +9,7 @@ public class Player {
 	public int x = 100;
 	public int y = 100;
 	public int speed = 1;
+	public int playerhealth = 100;
 	
 	public String direction = "down";
 	public int spriteCounter = 0;
