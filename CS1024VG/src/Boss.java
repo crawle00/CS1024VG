@@ -36,8 +36,12 @@ public class Boss {
 		else if(this.bossHealth >= 30) {
 			image = phase2;
 		}
-		else {
+		else if(this.bossHealth < 30 && this.bossHealth > 0) {
 			image = phase3;
+		}
+		else {
+			//Thien make a you win page
+			System.out.println("You Win!");
 		}
 		
 		

@@ -44,7 +44,7 @@ public class GamePanel extends JPanel implements Runnable {
 	    }
 	    //collision for boss tweak later
 	    if((player.getPlayerProjectile().getX() >= 350 && player.getPlayerProjectile().getX() <= 450) && (player.getPlayerProjectile().getY() >= 125 && player.getPlayerProjectile().getY() <= 250)) {
-			boss.setBossHealth(boss.getBossHealth()-1);
+			boss.setBossHealth(boss.getBossHealth()-10);
 			player.getPlayerProjectile();
 			System.out.println(boss.getBossHealth());
 			player.getPlayerProjectile().setVisibility(false);

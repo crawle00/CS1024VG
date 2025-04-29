@@ -86,6 +86,10 @@ public class Projectile {
 		if(this.visibility) {
 			g2.drawImage(image, x, y, gp.tileSize / 2, gp.tileSize / 2, null);
 		}
+		else {
+			this.x = 0;
+			this.y = 0;
+		}
 
 	}
 }
