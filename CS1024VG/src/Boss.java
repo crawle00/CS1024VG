@@ -49,4 +49,22 @@ public class Boss {
 	public void update() {
 		
 	}
+	public int getBossHealth() {
+		return bossHealth;
+	}
+	public void setBossHealth(int bossHealth) {
+		this.bossHealth = bossHealth;
+	}
+	public int getBossx() {
+		return bossx;
+	}
+	public void setBossx(int bossx) {
+		this.bossx = bossx;
+	}
+	public int getBossy() {
+		return bossy;
+	}
+	public void setBossy(int bossy) {
+		this.bossy = bossy;
+	}
 }

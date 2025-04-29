@@ -12,6 +12,8 @@ public class Projectile {
 	private int speed = 2;
 	private GamePanel gp;
 	
+	public Projectile() {}
+	
 	public Projectile (String direction, int x, int y, GamePanel gp) {
 		try {
 			image = ImageIO.read(getClass().getResourceAsStream("/player/player-bullet.png"));

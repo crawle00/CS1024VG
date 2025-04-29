@@ -17,6 +17,7 @@ public class Player {
 	
 	private int shootCooldown = 0;
 	private final int maxCooldown = 200;
+	Projectile p = new Projectile();
 	
 	public BufferedImage up1, up2, up3, up4, up5, up6;
 	public BufferedImage down1, down2, down3, down4, down5, down6;
@@ -59,6 +60,7 @@ public class Player {
 		}
 	}
 	
+	
 	public void update() {
 		// walking
 		if (kh.w) {
@@ -87,7 +89,7 @@ public class Player {
 		if (shootCooldown > 0) shootCooldown--;
 		if (shootCooldown == 0) {
 		    if (kh.up || kh.down || kh.left || kh.right) {
-		        Projectile p = null;
+		         p = null;
 		        if (kh.up) p = new Projectile("up", x, y, gp);
 		        else if (kh.down) p = new Projectile("down", x, y, gp);
 		        else if (kh.left) p = new Projectile("left", x, y, gp);
@@ -98,6 +100,11 @@ public class Player {
 		}
 		
 	}
+	
+	public Projectile getPlayerProjectile() {
+		return p;
+	}
+	
 	
 	public void draw(Graphics2D g2) {
 		BufferedImage image = null;
