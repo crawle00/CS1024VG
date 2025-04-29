@@ -60,25 +60,21 @@ public class Player {
 		if (kh.w) {
 			direction = "up";
 			if (y >= - gp.tileSize / 2) y -= speed;
-		}
-		else if (kh.a) {
+		} else if (kh.a) {
 			direction = "left";
 			if (x >= 0) x -= speed;
-		}
-		else if (kh.s) {
+		} else if (kh.s) {
 			direction = "down";
 			if (y <= gp.maxScreenRow * gp.tileSize - gp.tileSize * 2) y += speed;
-		}
-		else if (kh.d) {
+		} else if (kh.d) {
 			direction = "right";
 			if (x <= gp.maxScreenCol * gp.tileSize - gp.tileSize) x += speed;
 		}
 		if (kh.w || kh.a || kh.s || kh.d) {
 			spriteCounter++;
 			if (spriteCounter > 30) {
-				if (spriteNum == 6) {
-					spriteNum = 1;
-				} else spriteNum++;
+				if (spriteNum == 6) spriteNum = 1;
+				else spriteNum++;
 				spriteCounter = 0;
 			}
 		}
@@ -89,84 +85,36 @@ public class Player {
 		BufferedImage image = null;
 		switch(direction) {
 		case "up":
-			if (spriteNum == 1) {
-				image = up1;
-			}
-			if (spriteNum == 2) {
-				image = up2;
-			}
-			if (spriteNum == 3) {
-				image = up3;
-			}
-			if (spriteNum == 4) {
-				image = up4;
-			}
-			if (spriteNum == 5) {
-				image = up5;
-			}
-			if (spriteNum == 6) {
-				image = up6;
-			}
+			if (spriteNum == 1) image = up1;
+			if (spriteNum == 2) image = up2;
+			if (spriteNum == 3) image = up3;
+			if (spriteNum == 4) image = up4;
+			if (spriteNum == 5) image = up5;
+			if (spriteNum == 6) image = up6;
 			break;
 		case "down":
-			if (spriteNum == 1) {
-				image = down1;
-			}
-			if (spriteNum == 2) {
-				image = down2;
-			}
-			if (spriteNum == 3) {
-				image = down3;
-			}
-			if (spriteNum == 4) {
-				image = down4;
-			}
-			if (spriteNum == 5) {
-				image = down5;
-			}
-			if (spriteNum == 6) {
-				image = down6;
-			}
+			if (spriteNum == 1) image = down1;
+			if (spriteNum == 2) image = down2;
+			if (spriteNum == 3) image = down3;
+			if (spriteNum == 4) image = down4;
+			if (spriteNum == 5) image = down5;
+			if (spriteNum == 6) image = down6;
 			break;
 		case "left":
-			if (spriteNum == 1) {
-				image = left1;
-			}
-			if (spriteNum == 2) {
-				image = left2;
-			}
-			if (spriteNum == 3) {
-				image = left3;
-			}
-			if (spriteNum == 4) {
-				image = left4;
-			}
-			if (spriteNum == 5) {
-				image = left5;
-			}
-			if (spriteNum == 6) {
-				image = left6;
-			}
+			if (spriteNum == 1) image = left1;
+			if (spriteNum == 2) image = left2;
+			if (spriteNum == 3) image = left3;
+			if (spriteNum == 4) image = left4;
+			if (spriteNum == 5) image = left5;
+			if (spriteNum == 6) image = left6;
 			break;
 		case "right":
-			if (spriteNum == 1) {
-				image = right1;
-			}
-			if (spriteNum == 2) {
-				image = right2;
-			}
-			if (spriteNum == 3) {
-				image = right3;
-			}
-			if (spriteNum == 4) {
-				image = right4;
-			}
-			if (spriteNum == 5) {
-				image = right5;
-			}
-			if (spriteNum == 6) {
-				image = right6;
-			}
+			if (spriteNum == 1) image = right1;
+			if (spriteNum == 2) image = right2;
+			if (spriteNum == 3) image = right3;
+			if (spriteNum == 4) image = right4;
+			if (spriteNum == 5) image = right5;
+			if (spriteNum == 6) image = right6;
 			break;
 		}
 		g2.drawImage(image, x, y, gp.tileSize, gp.tileSize * 2, null);
