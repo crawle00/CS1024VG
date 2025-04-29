@@ -16,7 +16,7 @@ public class Player {
 	private int spriteNum = 1;
 	
 	private int shootCooldown = 0;
-	private final int maxCooldown = 600;
+	private final int maxCooldown = 200;
 	
 	public BufferedImage up1, up2, up3, up4, up5, up6;
 	public BufferedImage down1, down2, down3, down4, down5, down6;
@@ -84,18 +84,16 @@ public class Player {
 		}
 		
 		// projectile
-		if (shootCooldown > 0) {
-		    shootCooldown--;
-		}
-
+		if (shootCooldown > 0) shootCooldown--;
 		if (shootCooldown == 0) {
 		    if (kh.up || kh.down || kh.left || kh.right) {
-		        if (kh.up) new Projectile ("up", x, y);
-		        else if (kh.down) new Projectile ("down", x, y);
-		        else if (kh.left) new Projectile ("left", x, y);
-		        else if (kh.right) new Projectile ("right", x, y);
-		        
-		        shootCooldown = maxCooldown; // **only** start cooldown after shooting
+		        Projectile p = null;
+		        if (kh.up) p = new Projectile("up", x, y, gp);
+		        else if (kh.down) p = new Projectile("down", x, y, gp);
+		        else if (kh.left) p = new Projectile("left", x, y, gp);
+		        else if (kh.right) p = new Projectile("right", x, y, gp);
+		        if (p != null) gp.projectiles.add(p);
+		        shootCooldown = maxCooldown;
 		    }
 		}
 		

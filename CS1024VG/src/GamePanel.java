@@ -2,6 +2,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JPanel;
 
@@ -10,6 +12,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public KeyHandler kh = new KeyHandler();
 	public Player player = new Player(this, kh);
 	public Boss boss = new Boss(100, 350, 150);
+	public ArrayList<Projectile> projectiles = new ArrayList<>();
 	
 	final int tileSize = 16 * 3; // 16x16 and scale of 3
 	final int maxScreenCol = 16;
@@ -31,6 +34,14 @@ public class GamePanel extends JPanel implements Runnable {
 		player.update();
 		boss.update();
 		
+		Iterator<Projectile> iter = projectiles.iterator();
+	    while (iter.hasNext()) {
+	        Projectile p = iter.next();
+	        p.update();
+	        if (p.isOffScreen()) {
+	            iter.remove();
+	        }
+	    }
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -38,6 +49,9 @@ public class GamePanel extends JPanel implements Runnable {
 		Graphics2D g2 = (Graphics2D) g;
 		player.draw(g2);
 		boss.drawBoss(g2);
+		for (Projectile p : projectiles) {
+	        p.draw(g2);
+	    }
 		g2.dispose();
 		Toolkit.getDefaultToolkit().sync();
 	}
