@@ -11,7 +11,6 @@ public class Main {
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 		frame.setVisible(true);
-		//test
 	
 		game.start();
 	}
