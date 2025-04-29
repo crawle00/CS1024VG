@@ -82,6 +82,7 @@ public class Player {
 				if (spriteNum == 6) spriteNum = 1;
 				else spriteNum++;
 				spriteCounter = 0;
+				
 			}
 		}
 		
@@ -98,6 +99,7 @@ public class Player {
 		        shootCooldown = maxCooldown;
 		    }
 		}
+		
 		
 	}
 	

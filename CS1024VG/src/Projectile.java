@@ -11,6 +11,7 @@ public class Projectile {
 	private int y;
 	private int speed = 2;
 	private GamePanel gp;
+	private boolean visibility = true;
 	
 	public Projectile() {}
 	
@@ -25,6 +26,7 @@ public class Projectile {
 		this.x = x + 16;
 		this.y = y + 32 + 16;
 		this.gp = gp;
+		
 	}
 	
 	public boolean isOffScreen() {
@@ -39,6 +41,15 @@ public class Projectile {
 		else if (direction.equals("right")) x += speed;
 	}
 	
+	
+	public boolean isVisibility() {
+		return visibility;
+	}
+
+	public void setVisibility(boolean visibility) {
+		this.visibility = visibility;
+	}
+
 	public String getDirection() {
 		return direction;
 	}
@@ -72,6 +83,9 @@ public class Projectile {
 	}
 
 	public void draw(Graphics2D g2) {
-		g2.drawImage(image, x, y, gp.tileSize / 2, gp.tileSize / 2, null);
+		if(this.visibility) {
+			g2.drawImage(image, x, y, gp.tileSize / 2, gp.tileSize / 2, null);
+		}
+
 	}
 }
