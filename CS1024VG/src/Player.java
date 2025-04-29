@@ -9,11 +9,14 @@ public class Player {
 	public int x = 100;
 	public int y = 100;
 	public int speed = 1;
-	public int playerhealth = 100;
+	public int playerHealth = 100;
 	
-	public String direction = "down";
-	public int spriteCounter = 0;
-	public int spriteNum = 1;
+	private String direction = "down";
+	private int spriteCounter = 0;
+	private int spriteNum = 1;
+	
+	private int shootCooldown = 0;
+	private final int maxCooldown = 600;
 	
 	public BufferedImage up1, up2, up3, up4, up5, up6;
 	public BufferedImage down1, down2, down3, down4, down5, down6;
@@ -57,6 +60,7 @@ public class Player {
 	}
 	
 	public void update() {
+		// walking
 		if (kh.w) {
 			direction = "up";
 			if (y >= - gp.tileSize / 2) y -= speed;
@@ -77,6 +81,22 @@ public class Player {
 				else spriteNum++;
 				spriteCounter = 0;
 			}
+		}
+		
+		// projectile
+		if (shootCooldown > 0) {
+		    shootCooldown--;
+		}
+
+		if (shootCooldown == 0) {
+		    if (kh.up || kh.down || kh.left || kh.right) {
+		        if (kh.up) new Projectile ("up", x, y);
+		        else if (kh.down) new Projectile ("down", x, y);
+		        else if (kh.left) new Projectile ("left", x, y);
+		        else if (kh.right) new Projectile ("right", x, y);
+		        
+		        shootCooldown = maxCooldown; // **only** start cooldown after shooting
+		    }
 		}
 		
 	}
