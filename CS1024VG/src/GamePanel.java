@@ -11,7 +11,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public Thread thread;
 	public KeyHandler kh = new KeyHandler();
 	public Player player = new Player(this, kh);
-	public Boss boss = new Boss(this, 100, 650, 150);
+	public Boss boss = new Boss(this, 100, 650, 150, player);
 	public UI UI = new UI();//THIEN CHANGED THIS???????
 	public ArrayList<Projectile> projectiles = new ArrayList<>();
 	public ArrayList<BossProjectile> bossProjectiles = new ArrayList<>();
