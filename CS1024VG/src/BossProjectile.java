@@ -35,7 +35,6 @@ public class BossProjectile extends Projectile {
     }
 
     @Override
-    // sdf
     public void update() {
         switch (bpdirection) {
             case "up" -> bpy -= bpspeed;
@@ -51,6 +50,7 @@ public class BossProjectile extends Projectile {
         if (player.hitCooldown == 0 && bpx + bpgp.tileSize / 2 > player.x && bpx < player.x + bpgp.tileSize && bpy + bpgp.tileSize / 2 > player.y && bpy < player.y + bpgp.tileSize * 2) {
         	player.playerHealth -= 25;
         	player.hitCooldown = player.maxHitCooldown;
+        	UI.playerHPBarWidth = player.playerHealth;
         }
 
     }

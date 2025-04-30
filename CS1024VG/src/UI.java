@@ -7,7 +7,7 @@ import java.awt.Color;
 public class UI {
 	BufferedImage bossHPOutline, playerHPOutline, bossHPBar,playerHPBar,shootCD;
 	public int bossHPBarWidth = 300;
-	public int playerHPBarWidth = 100;
+	public static int playerHPBarWidth = 100;
 	public UI(){
 		try {
 			bossHPOutline = ImageIO.read(getClass().getResourceAsStream("/UI/healthbar.png"));
