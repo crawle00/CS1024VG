@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
+
+import static GamePanel.GameState.LOSS;
+
+import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable {
 	public Thread thread;
@@ -15,6 +21,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public UI UI = new UI();//THIEN CHANGED THIS???????
 	public ArrayList<Projectile> projectiles = new ArrayList<>();
 	public ArrayList<BossProjectile> bossProjectiles = new ArrayList<>();
+	
 	
 	final int tileSize = 16 * 3; // 16x16 and scale of 3
 	final int maxScreenCol = 16;
@@ -93,6 +100,10 @@ public class GamePanel extends JPanel implements Runnable {
 		    }
 			g2.dispose();
 			Toolkit.getDefaultToolkit().sync();
+		}else if(gameState == GameState.WIN) {
+			g2.drawString("You WIN!!!", (maxScreenCol*tileSize)/2 ,(maxScreenRow*tileSize)/2);
+		}else if(gameState == GameState.LOSS) {
+			g2.drawString("you lose :((((", (maxScreenCol*tileSize)/2 ,(maxScreenRow*tileSize)/2);
 		}
 	
 	}
