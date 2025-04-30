@@ -10,13 +10,13 @@ public class Boss {
     public int bossHealth = 100;
     public int bossx = 0;
     public int bossy = 0;
+    private Random rand = new Random();
 
     private BufferedImage phase1, phase2, phase3;
     private GamePanel gp;
-    private Random rand = new Random();
 
     private int shootCooldown = 0;
-    private final int shootInterval = 60; // 60 frames
+    private final int shootInterval = 400; // 60 frames
     private List<BossProjectile> projectiles = new ArrayList<>();
 
     public Boss(GamePanel gp, int bossHealth, int bossx, int bossy) {
@@ -36,9 +36,15 @@ public class Boss {
 
     public void update() {
         shootCooldown--;
+        int randomValue = rand.nextInt(5) + 1;
         if (shootCooldown <= 0) {
-            shootPattern();
+            if(randomValue == 1) {
+        	shootPattern();
             shootCooldown = shootInterval;
+            }
+            else if(randomValue == 2) {
+            	shootPattern2();
+            }
         }
 
         projectiles.removeIf(BossProjectile::isOffScreen);
@@ -49,7 +55,8 @@ public class Boss {
 
     public void drawBoss(Graphics2D g2) {
         BufferedImage image = null;
-
+ 
+        
         if (bossHealth >= 70) {
             image = phase1;
         } else if (bossHealth >= 30) {
@@ -76,6 +83,21 @@ public class Boss {
 
         for (String dir : directions) {
             projectiles.add(new BossProjectile(dir, bossx, bossy, gp));
+        }
+    }
+    
+    private void shootPattern2() {
+    	int tempy = -100;
+        String[] directions = {
+            "left", "left", "left", "left",
+            "left", "left", "left", "left", 
+            "left", "left", "left", "left",
+            "left", "left", "left", "left" 
+        };
+
+        for (String dir : directions) {
+            projectiles.add(new BossProjectile(dir, bossx, tempy, gp));
+            tempy += 20;
         }
     }
 

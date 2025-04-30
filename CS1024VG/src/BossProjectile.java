@@ -7,7 +7,7 @@ public class BossProjectile extends Projectile {
     private BufferedImage bpimage;
     private String bpdirection;
     private int bpx, bpy;
-    private int bpspeed = 2;
+    private int bpspeed = 1;
     private GamePanel bpgp;
 
     public BossProjectile(String direction, int x, int y, GamePanel gp) {
