@@ -12,13 +12,19 @@ public class GamePanel extends JPanel implements Runnable {
 	public KeyHandler kh = new KeyHandler();
 	public Player player = new Player(this, kh);
 	public Boss boss = new Boss(this, 100, 650, 150);
-	public UI UI = new UI();//change here/
+	public UI UI = new UI();//THIEN CHANGED THIS???????
 	public ArrayList<Projectile> projectiles = new ArrayList<>();
 	public ArrayList<BossProjectile> bossProjectiles = new ArrayList<>();
 	
 	final int tileSize = 16 * 3; // 16x16 and scale of 3
 	final int maxScreenCol = 16;
 	final int maxScreenRow = 9;
+	//THIEN CHANGE HERE
+	enum GameState {
+		PLAYING, WIN, LOSS;
+	}
+	GameState gameState = GameState.PLAYING;
+	//END OF THIEN CHANGE
 	
 	public GamePanel() {
 		this.setPreferredSize(new Dimension(maxScreenCol*tileSize, maxScreenRow*tileSize));
@@ -33,54 +39,65 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 	
 	public void update() {
-		player.update();
-		boss.update();
-		
-		Iterator<Projectile> iter = projectiles.iterator();
-	    while (iter.hasNext()) {
-	        Projectile p = iter.next();
-	        p.update();
-	        if (p.isOffScreen()) {
-	            iter.remove();
+		if(gameState == GameState.PLAYING) { //CHANGE THIS AND PUT ALL THE UPDATE STUFF INSIDE OF IT
+			player.update();
+			boss.update();
+			
+			Iterator<Projectile> iter = projectiles.iterator();
+		    while (iter.hasNext()) {
+		        Projectile p = iter.next();
+		        p.update();
+		        if (p.isOffScreen()) {
+		            iter.remove();
+		        }
+		    }
+		    //idk if this works
+		    Iterator<BossProjectile> biter = bossProjectiles.iterator();
+		    while (biter.hasNext()) {
+		        Projectile b = biter.next();
+		        b.update();
+		        if (b.isOffScreen()) {
+		            biter.remove();
+		        }
+		    }
+		    //collision for boss tweak later
+		    if((player.getPlayerProjectile().getX() >= 600 && player.getPlayerProjectile().getX() <= 700) && (player.getPlayerProjectile().getY() >= 110 && player.getPlayerProjectile().getY() <= 260)) {
+				boss.setBossHealth(boss.getBossHealth()-3);
+				UI.bossHPBarWidth = boss.bossHealth*3;//THIEN CHANGED THIS?????????
+				player.getPlayerProjectile();
+				System.out.println(boss.getBossHealth());
+				player.getPlayerProjectile().setVisibility(false);
+			}
+		    //reset boss health
+		    if(kh.r) {
+		    	boss.setBossHealth(100);
+		    }
+		    //THIEN CHANGE HERERERER
+		    if (boss.bossHealth <= 0) {
+	            gameState = GameState.WIN;
 	        }
-	    }
-	    //idk if this works
-	    Iterator<BossProjectile> biter = bossProjectiles.iterator();
-	    while (biter.hasNext()) {
-	        Projectile b = biter.next();
-	        b.update();
-	        if (b.isOffScreen()) {
-	            biter.remove();
-	        }
-	    }
-	    //collision for boss tweak later
-	    if((player.getPlayerProjectile().getX() >= 600 && player.getPlayerProjectile().getX() <= 700) && (player.getPlayerProjectile().getY() >= 110 && player.getPlayerProjectile().getY() <= 260)) {
-			boss.setBossHealth(boss.getBossHealth()-3);
-			UI.bossHPBarWidth = boss.bossHealth*3;//change here/
-			player.getPlayerProjectile();
-			System.out.println(boss.getBossHealth());
-			player.getPlayerProjectile().setVisibility(false);
+		    //EN OF CAHGENNGENNENE
 		}
-	    //reset boss health
-	    if(kh.r) {
-	    	boss.setBossHealth(100);
-	    }
 	}
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
-		player.draw(g2);
-		boss.drawBoss(g2);
-		UI.drawUI(g2);//change here/
-		for (Projectile p : projectiles) {
-	        p.draw(g2);
-	    }
-		for (Projectile b : projectiles) {
-	        b.draw(g2);
-	    }
-		g2.dispose();
-		Toolkit.getDefaultToolkit().sync();
+		
+		if(gameState == GameState.PLAYING) {//CHANGE HERE DO THE SAME THING AS YOU DID IN UPDATE
+			player.draw(g2);
+			boss.drawBoss(g2);
+			UI.drawUI(g2);//THIEN CHANGE HERE/
+			for (Projectile p : projectiles) {
+		        p.draw(g2);
+		    }
+			for (Projectile b : projectiles) {
+		        b.draw(g2);
+		    }
+			g2.dispose();
+			Toolkit.getDefaultToolkit().sync();
+		}
+	
 	}
 	
 	@Override
