@@ -6,10 +6,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JFrame;
-
-import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable {
 	public Thread thread;
@@ -80,6 +76,9 @@ public class GamePanel extends JPanel implements Runnable {
 		    //THIEN CHANGE HERERERER
 		    if (boss.bossHealth <= 0) {
 	            gameState = GameState.WIN;
+	        }
+		    if (player.playerHealth <= 0) {
+	            gameState = GameState.LOSS;
 	        }
 		    //EN OF CAHGENNGENNENE
 		}
