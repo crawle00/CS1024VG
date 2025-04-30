@@ -2,9 +2,12 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -89,7 +92,16 @@ public class GamePanel extends JPanel implements Runnable {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
+		BufferedImage background;
+		try {
+			background = ImageIO.read(getClass().getResourceAsStream("/background/Gym_2_layer_1_32x32.png"));
+			g2.drawImage(background, -300,-300, maxScreenCol*(tileSize+100), maxScreenRow*(tileSize+100), null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+
 		if(gameState == GameState.PLAYING) {//CHANGE HERE DO THE SAME THING AS YOU DID IN UPDATE
 			player.draw(g2);
 			boss.drawBoss(g2);
