@@ -18,6 +18,15 @@ public class BossProjectile extends Projectile {
     private GamePanel bpgp;
     private Player player;
     private boolean alive = true;
+    public int getBpspeed() {
+		return bpspeed;
+	}
+
+	public void setBpspeed(int bpspeed) {
+		this.bpspeed = bpspeed;
+	}
+
+	public BossProjectile() {}	
 
     public BossProjectile(String direction, int x, int y, GamePanel gp, Player player) {
         super(direction, x, y, gp);
