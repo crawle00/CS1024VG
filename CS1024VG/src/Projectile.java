@@ -9,7 +9,7 @@ public class Projectile {
 	private String direction;
 	private int x;
 	private int y;
-	private int speed = 2;
+	private int speed = 3;
 	private GamePanel gp;
 	private boolean visibility = true;
 	

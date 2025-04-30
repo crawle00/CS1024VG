@@ -4,7 +4,14 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class BossProjectile extends Projectile {
-    private BufferedImage bpimage;
+    private static final BufferedImage bpimage;
+    static {
+        try {
+        	bpimage = ImageIO.read(BossProjectile.class.getResourceAsStream("/Boss/BossProjectile.png"));
+        } catch (IOException e) {
+            throw new RuntimeException("Could not load boss projectile image", e);
+        }
+    }
     private String bpdirection;
     private int bpx, bpy;
     private int bpspeed = 1;
@@ -16,12 +23,6 @@ public class BossProjectile extends Projectile {
         this.bpx = x + 50; // Adjust projectile spawn point relative to boss
         this.bpy = y + 50;
         this.bpgp = gp;
-
-        try {
-            bpimage = ImageIO.read(getClass().getResourceAsStream("/Boss/BossProjectile.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
