@@ -16,7 +16,7 @@ public class Boss {
     private GamePanel gp;
 
     private int shootCooldown = 0;
-    private final int shootInterval = 400; // 60 frames
+    private final int shootInterval = 300; // 60 frames
     private List<BossProjectile> projectiles = new ArrayList<>();
 
     public Boss(GamePanel gp, int bossHealth, int bossx, int bossy) {
@@ -50,6 +50,10 @@ public class Boss {
             }
             else if(randomValue == 2) {
             	shootPattern2();
+            	shootCooldown = shootInterval;
+            }
+            else if(randomValue == 3) {
+            	shootPattern3();
             	shootCooldown = shootInterval;
             }
         }
@@ -105,6 +109,23 @@ public class Boss {
         for (String dir : directions) {
             projectiles.add(new BossProjectile(dir, bossx, tempy, gp));
             tempy += 20;
+        }
+    }
+    private void shootPattern3() {
+    	int tempy = -100;
+        String[] directions = {
+            "left", "left", "left", "left",
+            "left", "left", "left", "left", 
+            "left", "left", "left", "left",
+            "left", "left", "left", "left" 
+        };
+
+        for (String dir : directions) {
+            projectiles.add(new BossProjectile(dir, bossx, tempy, gp));
+            tempy += 20;
+            if(tempy >= 150) {
+            	tempy = -100;
+            }
         }
     }
 
