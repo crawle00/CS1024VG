@@ -9,8 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JFrame;
 
-import static GamePanel.GameState.LOSS;
-
 import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable {
