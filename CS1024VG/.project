@@ -14,16 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/UI/healthbar.png</name>
-			<type>1</type>
-			<location>C:/Users/thien/Downloads/healthbar.png</location>
-		</link>
-		<link>
-			<name>src/UI/playerhealthbar.png</name>
-			<type>1</type>
-			<location>C:/Users/thien/Downloads/playerhealthbar.png</location>
-		</link>
-	</linkedResources>
 </projectDescription>
