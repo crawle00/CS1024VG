@@ -18,7 +18,7 @@ public class Boss {
     private Player player;
 
     private int shootCooldown = 0;
-    private int shootInterval = 300; // 60 frames
+    private int shootInterval = 400; // 60 frames
     private List<BossProjectile> projectiles = new ArrayList<>();
 
     public Boss(GamePanel gp, int bossHealth, int bossx, int bossy, Player player) {
@@ -78,10 +78,10 @@ public class Boss {
             image = phase1;
         } else if (bossHealth >= 30) {
             image = phase2;
-            shootInterval = 200;
+            shootInterval = 300;
         } else if (bossHealth > 0) {
             image = phase3;
-            shootInterval = 100;
+            shootInterval = 250;
             
         } else {
             System.out.println("You Win!");
