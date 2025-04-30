@@ -91,9 +91,6 @@ public class GamePanel extends JPanel implements Runnable {
 			for (Projectile p : projectiles) {
 		        p.draw(g2);
 		    }
-			for (Projectile b : projectiles) {
-		        b.draw(g2);
-		    }
 			g2.dispose();
 			Toolkit.getDefaultToolkit().sync();
 		}
