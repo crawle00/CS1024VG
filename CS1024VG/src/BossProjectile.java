@@ -15,7 +15,17 @@ public class BossProjectile extends Projectile {
     private String bpdirection;
     private int bpx, bpy;
     private int bpspeed = 1;
-    private GamePanel bpgp;
+    public int getBpspeed() {
+		return bpspeed;
+	}
+
+	public void setBpspeed(int bpspeed) {
+		this.bpspeed = bpspeed;
+	}
+
+	private GamePanel bpgp;
+	
+	public BossProjectile() {}	
 
     public BossProjectile(String direction, int x, int y, GamePanel gp) {
         super(direction, x, y, gp);
