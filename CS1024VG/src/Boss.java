@@ -156,7 +156,7 @@ public class Boss {
         }
     }
     private void shootPattern5() {
-    	int tempy = -100;
+    	int tempy = -300;
         String[] directions = {
             "left", "left", "left", "left",
             "left", "left", "left", "left", 
@@ -165,7 +165,7 @@ public class Boss {
         };
         for (String dir : directions) {
             projectiles.add(new BossProjectile(dir, bossx, tempy, gp, player));
-            tempy += 125;
+            tempy += 150;
         }
     }
 

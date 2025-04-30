@@ -56,7 +56,7 @@ public class BossProjectile extends Projectile {
             case "downright" -> { bpx += bpspeed; bpy += bpspeed; }
         }
         if (player.hitCooldown > 0) player.hitCooldown--;
-        if (player.hitCooldown == 0 && bpx + bpgp.tileSize / 2 > player.x && bpx < player.x + bpgp.tileSize && bpy + bpgp.tileSize / 2 > player.y && bpy < player.y + bpgp.tileSize * 2) {
+        if (player.hitCooldown == 0 && bpx > player.x -20 && bpx < player.x + 20 && bpy > player.y && bpy < player.y+100) {
         	player.playerHealth -= 25;
         	player.hitCooldown = player.maxHitCooldown;
         	UI.playerHPBarWidth = player.playerHealth;
