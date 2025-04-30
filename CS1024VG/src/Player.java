@@ -106,6 +106,14 @@ public class Player {
 		
 	}
 	
+	public int getPlayerHealth() {
+		return playerHealth;
+	}
+
+	public void setPlayerHealth(int playerHealth) {
+		this.playerHealth = playerHealth;
+	}
+
 	public Projectile getPlayerProjectile() {
 		return p;
 	}

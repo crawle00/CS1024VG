@@ -71,7 +71,9 @@ public class GamePanel extends JPanel implements Runnable {
 			}
 		    //reset boss health
 		    if(kh.r) {
+		    	player.setPlayerHealth(100);
 		    	boss.setBossHealth(100);
+		    	gameState = GameState.PLAYING;
 		    }
 		    //THIEN CHANGE HERERERER
 		    if (boss.bossHealth <= 0) {
