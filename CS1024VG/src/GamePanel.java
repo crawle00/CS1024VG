@@ -12,6 +12,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public KeyHandler kh = new KeyHandler();
 	public Player player = new Player(this, kh);
 	public Boss boss = new Boss(this, 100, 650, 150);
+	public UI UI = new UI();//change here/
 	public ArrayList<Projectile> projectiles = new ArrayList<>();
 	public ArrayList<BossProjectile> bossProjectiles = new ArrayList<>();
 	
@@ -55,6 +56,7 @@ public class GamePanel extends JPanel implements Runnable {
 	    //collision for boss tweak later
 	    if((player.getPlayerProjectile().getX() >= 600 && player.getPlayerProjectile().getX() <= 700) && (player.getPlayerProjectile().getY() >= 110 && player.getPlayerProjectile().getY() <= 260)) {
 			boss.setBossHealth(boss.getBossHealth()-3);
+			UI.bossHPBarWidth = boss.bossHealth*3;//change here/
 			player.getPlayerProjectile();
 			System.out.println(boss.getBossHealth());
 			player.getPlayerProjectile().setVisibility(false);
@@ -70,6 +72,7 @@ public class GamePanel extends JPanel implements Runnable {
 		Graphics2D g2 = (Graphics2D) g;
 		player.draw(g2);
 		boss.drawBoss(g2);
+		UI.drawUI(g2);//change here/
 		for (Projectile p : projectiles) {
 	        p.draw(g2);
 	    }
