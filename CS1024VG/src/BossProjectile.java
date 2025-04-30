@@ -16,13 +16,16 @@ public class BossProjectile extends Projectile {
     private int bpx, bpy;
     private int bpspeed = 1;
     private GamePanel bpgp;
+    private Player player;
+    private boolean alive = true;
 
-    public BossProjectile(String direction, int x, int y, GamePanel gp) {
+    public BossProjectile(String direction, int x, int y, GamePanel gp, Player player) {
         super(direction, x, y, gp);
         this.bpdirection = direction;
         this.bpx = x + 50; // Adjust projectile spawn point relative to boss
         this.bpy = y + 50;
         this.bpgp = gp;
+        this.player = player;
     }
 
     @Override
@@ -43,6 +46,12 @@ public class BossProjectile extends Projectile {
             case "downleft" -> { bpx -= bpspeed; bpy += bpspeed; }
             case "downright" -> { bpx += bpspeed; bpy += bpspeed; }
         }
+        if (player.hitCooldown > 0) player.hitCooldown--;
+        if (player.hitCooldown == 0 && bpx + bpgp.tileSize / 2 > player.x && bpx < player.x + bpgp.tileSize && bpy + bpgp.tileSize / 2 > player.y && bpy < player.y + bpgp.tileSize * 2) {
+        	player.playerHealth -= 25;
+        	player.hitCooldown = player.maxHitCooldown;
+        }
+
     }
 
     @Override

@@ -14,16 +14,18 @@ public class Boss {
 
     private BufferedImage phase1, phase2, phase3;
     private GamePanel gp;
+    private Player player;
 
     private int shootCooldown = 0;
     private final int shootInterval = 300; // 60 frames
     private List<BossProjectile> projectiles = new ArrayList<>();
 
-    public Boss(GamePanel gp, int bossHealth, int bossx, int bossy) {
+    public Boss(GamePanel gp, int bossHealth, int bossx, int bossy, Player player) {
         this.gp = gp;
         this.bossHealth = bossHealth;
         this.bossx = bossx;
         this.bossy = bossy;
+        this.player = player;
 
         try {
             phase1 = ImageIO.read(getClass().getResourceAsStream("/Boss/bossPhase1.png"));
@@ -96,7 +98,7 @@ public class Boss {
         };
 
         for (String dir : directions) {
-            projectiles.add(new BossProjectile(dir, bossx, bossy, gp));
+            projectiles.add(new BossProjectile(dir, bossx, bossy, gp, player));
         }
     }
     
@@ -110,7 +112,7 @@ public class Boss {
         };
 
         for (String dir : directions) {
-            projectiles.add(new BossProjectile(dir, bossx, tempy, gp));
+            projectiles.add(new BossProjectile(dir, bossx, tempy, gp, player));
             tempy += 20;
         }
     }
@@ -123,7 +125,7 @@ public class Boss {
             "left", "left", "left", "left" 
         };
         for (String dir : directions) {
-            projectiles.add(new BossProjectile(dir, bossx, tempy, gp));
+            projectiles.add(new BossProjectile(dir, bossx, tempy, gp, player));
             tempy += 20;
             if(tempy >= 150) {
             	tempy = -100;
@@ -142,7 +144,7 @@ public class Boss {
             "left", "left", "left", "left",
         };
         for (String dir : directions) {
-            projectiles.add(new BossProjectile(dir, bossx, tempy, gp));
+            projectiles.add(new BossProjectile(dir, bossx, tempy, gp, player));
             tempy += 20;
             if(tempy == 140) {
             	tempy = 270;
@@ -158,7 +160,7 @@ public class Boss {
             "left", "left", "left", "left" 
         };
         for (String dir : directions) {
-            projectiles.add(new BossProjectile(dir, bossx, tempy, gp));
+            projectiles.add(new BossProjectile(dir, bossx, tempy, gp, player));
             tempy += 125;
         }
     }

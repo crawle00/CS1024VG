@@ -17,6 +17,10 @@ public class Player {
 	
 	private int shootCooldown = 0;
 	private final int maxCooldown = 200;
+	
+	public int hitCooldown = 0;
+    public final int maxHitCooldown = 6000;
+    
 	Projectile p = new Projectile();
 	
 	public BufferedImage up1, up2, up3, up4, up5, up6;
@@ -60,7 +64,6 @@ public class Player {
 		}
 	}
 	
-	
 	public void update() {
 		// walking
 		if (kh.w) {
@@ -103,8 +106,6 @@ public class Player {
 		
 	}
 	
-
-
 	public Projectile getPlayerProjectile() {
 		return p;
 	}
