@@ -37,11 +37,6 @@ public class Boss {
     public void update() {
         shootCooldown--;
         int randomValue = rand.nextInt(5) + 1;
-        boolean pat1 = true;
-        boolean pat2 = true;
-        boolean pat3 = true;
-        boolean pat4 = true;
-        boolean pat5 = true;
         if (shootCooldown <= 0) {
             if(randomValue == 1) {
         	shootPattern();
@@ -54,6 +49,14 @@ public class Boss {
             }
             else if(randomValue == 3) {
             	shootPattern3();
+            	shootCooldown = shootInterval;
+            }
+            else if(randomValue == 4) {
+            	shootPattern4();
+            	shootCooldown = shootInterval;
+            }
+            else if(randomValue == 5) {
+            	shootPattern5();
             	shootCooldown = shootInterval;
             }
         }
@@ -119,13 +122,44 @@ public class Boss {
             "left", "left", "left", "left",
             "left", "left", "left", "left" 
         };
-
         for (String dir : directions) {
             projectiles.add(new BossProjectile(dir, bossx, tempy, gp));
             tempy += 20;
             if(tempy >= 150) {
             	tempy = -100;
             }
+        }
+    }
+    private void shootPattern4() {
+    	int tempy = -100;
+        String[] directions = {
+            "left", "left", "left", "left",
+            "left", "left", "left", "left", 
+            "left", "left", "left", "left",
+            "left", "left", "left", "left",  "left", "left", "left", "left",
+            "left", "left", "left", "left", 
+            "left", "left", "left", "left",
+            "left", "left", "left", "left",
+        };
+        for (String dir : directions) {
+            projectiles.add(new BossProjectile(dir, bossx, tempy, gp));
+            tempy += 20;
+            if(tempy == 140) {
+            	tempy = 270;
+            }
+        }
+    }
+    private void shootPattern5() {
+    	int tempy = -100;
+        String[] directions = {
+            "left", "left", "left", "left",
+            "left", "left", "left", "left", 
+            "left", "left", "left", "left",
+            "left", "left", "left", "left" 
+        };
+        for (String dir : directions) {
+            projectiles.add(new BossProjectile(dir, bossx, tempy, gp));
+            tempy += 125;
         }
     }
 
