@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 public class Player {
 	public int x = 100;
 	public int y = 100;
-	public int speed = 1;
+	public int speed = 2;
 	public int playerHealth = 100;
 	
 	private String direction = "down";

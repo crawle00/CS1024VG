@@ -37,13 +37,20 @@ public class Boss {
     public void update() {
         shootCooldown--;
         int randomValue = rand.nextInt(5) + 1;
+        boolean pat1 = true;
+        boolean pat2 = true;
+        boolean pat3 = true;
+        boolean pat4 = true;
+        boolean pat5 = true;
         if (shootCooldown <= 0) {
             if(randomValue == 1) {
         	shootPattern();
             shootCooldown = shootInterval;
+            //pat1 = true;
             }
             else if(randomValue == 2) {
             	shootPattern2();
+            	shootCooldown = shootInterval;
             }
         }
 
@@ -87,7 +94,7 @@ public class Boss {
     }
     
     private void shootPattern2() {
-    	int tempy = -100;
+    	int tempy = 135;
         String[] directions = {
             "left", "left", "left", "left",
             "left", "left", "left", "left", 
