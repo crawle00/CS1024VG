@@ -35,6 +35,7 @@ public class BossProjectile extends Projectile {
     }
 
     @Override
+    // sdf
     public void update() {
         switch (bpdirection) {
             case "up" -> bpy -= bpspeed;
