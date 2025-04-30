@@ -13,6 +13,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public Player player = new Player(this, kh);
 	public Boss boss = new Boss(100, 350, 150);
 	public ArrayList<Projectile> projectiles = new ArrayList<>();
+	public ArrayList<BossProjectile> bossProjectiles = new ArrayList<>();
 	
 	final int tileSize = 16 * 3; // 16x16 and scale of 3
 	final int maxScreenCol = 16;
@@ -42,6 +43,15 @@ public class GamePanel extends JPanel implements Runnable {
 	            iter.remove();
 	        }
 	    }
+	    //idk if this works
+	    Iterator<BossProjectile> biter = bossProjectiles.iterator();
+	    while (biter.hasNext()) {
+	        Projectile b = biter.next();
+	        b.update();
+	        if (b.isOffScreen()) {
+	            biter.remove();
+	        }
+	    }
 	    //collision for boss tweak later
 	    if((player.getPlayerProjectile().getX() >= 350 && player.getPlayerProjectile().getX() <= 450) && (player.getPlayerProjectile().getY() >= 125 && player.getPlayerProjectile().getY() <= 250)) {
 			boss.setBossHealth(boss.getBossHealth()-10);
@@ -62,6 +72,9 @@ public class GamePanel extends JPanel implements Runnable {
 		boss.drawBoss(g2);
 		for (Projectile p : projectiles) {
 	        p.draw(g2);
+	    }
+		for (Projectile b : projectiles) {
+	        b.draw(g2);
 	    }
 		g2.dispose();
 		Toolkit.getDefaultToolkit().sync();
