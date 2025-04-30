@@ -14,7 +14,7 @@ public class BossProjectile extends Projectile {
 	private GamePanel bpgp;
 	
 	
-	
+	public BossProjectile() {}
 	
 	public BossProjectile(String direction, int x, int y, GamePanel gp) {
 		super(direction, x, y, gp);
@@ -36,6 +36,7 @@ public class BossProjectile extends Projectile {
 	           bpy < 0 || bpy > bpgp.maxScreenRow * bpgp.tileSize;
 	}
 	
+
 	@Override
 	public void update() {
 		if (bpdirection == "up") bpy -= bpspeed;
@@ -47,6 +48,38 @@ public class BossProjectile extends Projectile {
 	@Override
 	public void draw(Graphics2D g2) {
 		g2.drawImage(bpimage, bpx, bpy, bpgp.tileSize / 2, bpgp.tileSize / 2, null);
+	}
+	
+	public String getBpdirection() {
+		return bpdirection;
+	}
+
+	public void setBpdirection(String bpdirection) {
+		this.bpdirection = bpdirection;
+	}
+
+	public int getBpx() {
+		return bpx;
+	}
+
+	public void setBpx(int bpx) {
+		this.bpx = bpx;
+	}
+
+	public int getBpy() {
+		return bpy;
+	}
+
+	public void setBpy(int bpy) {
+		this.bpy = bpy;
+	}
+
+	public int getBpspeed() {
+		return bpspeed;
+	}
+
+	public void setBpspeed(int bpspeed) {
+		this.bpspeed = bpspeed;
 	}
 
 }

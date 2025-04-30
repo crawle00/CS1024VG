@@ -10,6 +10,7 @@ public class Boss {
 	public int bossx = 0;
 	public int bossy = 0;
 	BufferedImage phase1, phase2, phase3;
+	BossProjectile b = new BossProjectile();
 	
 	public Boss(){
 	}
@@ -51,6 +52,7 @@ public class Boss {
 	
 	
 	public void update() {
+			
 		
 	}
 	public int getBossHealth() {
